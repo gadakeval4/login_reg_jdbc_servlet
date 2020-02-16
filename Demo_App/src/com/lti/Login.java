@@ -47,6 +47,8 @@ public class Login extends HttpServlet {
 
 		if (loginDao.checkLogin(name, password)) {
 
+			HttpSession httpSession = request.getSession();
+			httpSession.setAttribute("username", name);
 			response.sendRedirect("welcome.jsp");
 		} else {
 
