@@ -40,13 +40,17 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		//Get Values from JSP
 		String name = request.getParameter("uname");
 		String password = request.getParameter("pname");
 
 		LoginDao loginDao = new LoginDao();
 
+		
+		//Check Login
 		if (loginDao.checkLogin(name, password)) {
 
+			//Session Data
 			HttpSession httpSession = request.getSession();
 			httpSession.setAttribute("username", name);
 			response.sendRedirect("welcome.jsp");

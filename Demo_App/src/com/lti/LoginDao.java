@@ -50,7 +50,10 @@ public class LoginDao {
 			preparedStatement.setString(1, uname);
 			preparedStatement.setString(2, pname);
 
+			// Points to row into a result we got
 			ResultSet resultSet = preparedStatement.executeQuery();
+
+			// Checks if data exist or not
 			if (resultSet.next()) {
 				return true;
 			} else {
